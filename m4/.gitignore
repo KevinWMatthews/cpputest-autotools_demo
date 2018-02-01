@@ -1,0 +1,3 @@
+# Ignore all generated m4 scripts
+*
+!.gitignore
