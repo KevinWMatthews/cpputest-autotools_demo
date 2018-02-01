@@ -1,0 +1,77 @@
+Old tests from configure.ac
+
+AC_CHECK_HEADERS([CppUTest/CommandLineTestRunner.h],
+                 ,
+                 [AC_MSG_ERROR([Failed to find CppUTest header file!])])
+
+
+
+Trying to figure out how to check f or the CppUTest library before compilation.
+
+# AC_INIT([Hello], [1.0], [bug-hello@example.org], [],
+# [http://www.example.org/])
+dnl AC_DEFINE([HELLO_WORLD], ["Hello, World\n"],
+dnl [Greetings string.])
+dnl AC_LANG_CONFTEST(
+dnl [AC_LANG_PROGRAM([[const char hw[] = "Hello, World\n";]],
+dnl [[fputs (hw, stdout);]])])
+dnl gcc -E -dD conftest.c
+dnl
+dnl AC_LANG_CONFTEST(
+    dnl [AC_LANG_PROGRAM([[#include <stdio.h>]],
+                     dnl [[printf("hi\n")]]
+                     dnl )]
+    dnl )
+dnl gcc -E -dD conftest.c
+dnl
+dnl AC_LANG_CONFTEST(
+    dnl [AC_LANG_PROGRAM([[#include <CppUTest/CommandLineTestRunner.h>]],
+                     dnl [[CommandLineTestRunner::RunAllTests(0, 0)]]
+                     dnl )]
+    dnl )
+dnl #TODO how can I dump this to a file instaed of to the console?
+dnl g++ -E -dD conftest.c
+
+#AC_DEFINE([HELLO_WORLD], ["Hello, World\n"])
+#AC_LANG_CONFTEST(
+#[AC_LANG_PROGRAM([[const char hw[] = "Hello, World\n";]],
+#                [[fputs (hw, stdout);]])])
+#gcc -E -dD conftest.c -o -
+
+#AC_DEFINE([HELLO_WORLD], ["Hello, World\n"],
+#    [Greetings string.])
+#AC_LANG_CONFTEST(
+#    [AC_LANG_PROGRAM([[const char hw[] = "Hello, World\n";]],
+#    [[fputs (hw, stdout);]])])
+#gcc -E -dD -o - conftest.c
+
+#AC_LANG_PROGRAM([#include ], [CommandLineTestRunner::RunAllTests(0, 0);])
+
+
+# AC_LANG(C)
+
+# AC_LANG_PROGRAM([[#include <CppUTest/CommandLineTestRunner.h>]], [CommandLineTestRunner autoconf_test])
+# AC_LANG_PROGRAM([#include <CppUTest/TestFilter.h>], [TestFilter autoconf_test])
+# AC_LANG_PROGRAM([#include <CppUTest/Utest.h>], [Utest autoconf_test])
+#AC_LANG_PROGRAM([#include <stdio.h>], [])
+#gcc -E -dD -o - test.c
+
+# AC_LANG_PUSH([C++])
+# AC_SEARCH_LIBS([CommandLineTestRunner::RunAllTests], [CppUTest],
+               # [],
+               # [AC_MSG_ERROR([Failed to find library CppUTest])])
+# AC_LANG_POP([C++])
+
+# AC_LANG_PUSH([C++])
+# AC_CHECK_LIB([CppUTest], [CommandLineTestRunner::RunAllTests],
+             # ,
+             # [AC_MSG_ERROR([Failed to find library CppUTest])])
+             # )
+# AC_LANG_POP([C++])
+
+# AC_LANG_CPLUSPLUS
+# AC_CHECK_LIB([CppUTest], [CommandLineTestRunner::RunAllTests],
+             # ,
+             # [AC_MSG_ERROR([Failed to find library CppUTest])])
+             # )
+
