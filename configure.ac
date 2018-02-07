@@ -16,12 +16,21 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
 
-AC_LANG_PUSH([C++])
-AC_CHECK_HEADERS([CppUTest/TestHarness.h],
-               ,
-               [AC_MSG_ERROR([CppUTest headers not found!])]
+AC_ARG_ENABLE(tests,
+    [AS_HELP_STRING([--enable-tests], [Compile unit tests under CppUTest framework (default=no])],
+    [tests=${enableval}],
+    [tests=no]
 )
-AC_LANG_POP([C++])
+AM_CONDITIONAL(COMPILE_TESTS, test "x$tests" = "xyes")
+
+if test "x$tests" = "xyes"; then
+    AC_LANG_PUSH([C++])
+    AC_CHECK_HEADERS([CppUTest/TestHarness.h],
+       ,
+       [AC_MSG_ERROR([CppUTest headers not found!])]
+    )
+    AC_LANG_POP([C++])
+fi
 
 #TODO CppUTest is currently installed on my system.
 # If CppUTest is installed in a custom directory, the user needs to be able to specify this.
