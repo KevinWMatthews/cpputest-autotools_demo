@@ -24,7 +24,7 @@ AC_PROG_MKDIR_P
 
 # Process configure arguments
 AC_ARG_ENABLE(tests,
-    [AS_HELP_STRING([--enable-tests], [Compile unit tests under CppUTest framework (default=no])],
+    [AS_HELP_STRING([--enable-tests], [Compile unit tests under CppUTest framework (default=no)])],
     [tests=${enableval}],
     [tests=no]
 )
