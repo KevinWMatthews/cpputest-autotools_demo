@@ -16,19 +16,27 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
 
-# AC_SUBST(CPPUTEST_HOME, [/usr/local])
-AC_ARG_VAR(CPPUTEST_HOME, [Installation directory of unit test framework CppUTest])
-# we coud use AS_IF to see if CPPUTEST_HOME has been set.
-# We really should implement a header file check. We could use failure in this test to notify the user what to do.
-# It is possible to use automake to do the checking:
-#   configure.ac
-#       AM_CONDITIONAL([ENABLE_SOURCECODEPATH], [test "x$ac_srcpath" != "x"])
-#   Makefile.am
-#       if !ENABLE_SOURCECODEPATH
-#       SOURCECODEPATH = ...
-#       endif
-# Will this catch the error at configure time?
-# It may also be possible to use :=
+AC_LANG_PUSH([C++])
+AC_CHECK_HEADERS([CppUTest/TestHarness.h],
+               ,
+               [AC_MSG_ERROR([CppUTest headers not found!])]
+)
+AC_LANG_POP([C++])
+
+#TODO CppUTest is currently installed on my system.
+# If CppUTest is installed in a custom directory, the user needs to be able to specify this.
+# I'd like to do this using CPPUTEST_HOME, but I don't know how to force the header check to search there.
+
+# AC_ARG_VAR(CPPUTEST_HOME, [Installation directory of unit test framework CppUTest])
+# Access this in Makefile.am's using @CPPUTEST_HOME@
+#
+# I wonder if using --prefix=/path/to/install and a share/config.site in the installation directory will work.
+
+# We could also force the user to specify CppUTest's installation directory:
+# AS_IF([test "x$CPPUTEST_HOME" == x],
+      # [AC_MSG_ERROR([Must specify CppUTest installation directory using CPPUTEST_HOME])],
+      # [AC_MSG_NOTICE([CPPUTEST_HOME specified: $CPPUTEST_HOME])]
+# )
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
