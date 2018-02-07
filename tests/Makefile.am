@@ -6,3 +6,4 @@ test_src_SOURCES = RunAllTests.cpp \
 # 	 -lstdc++ -lCppUTest -lCppUTestExt
 test_src_LDADD = $(top_builddir)/src/libsrc.la -lCppUTest
 test_src_CPPFLAGS = -I$(top_srcdir)/include
+test_src_CFLAGS = -Wall
