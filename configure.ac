@@ -12,16 +12,31 @@ AM_SILENT_RULES([yes])
 LT_PREREQ([2.2])
 LT_INIT([dlopen])
 
+# Checks for programs.
 AC_PROG_CC
 AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CPP
 AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_MKDIR_P
 
+# Process configure arguments
 AC_ARG_ENABLE(tests,
     [AS_HELP_STRING([--enable-tests], [Compile unit tests under CppUTest framework (default=no])],
     [tests=${enableval}],
     [tests=no]
 )
 AM_CONDITIONAL(COMPILE_TESTS, test "x$tests" = "xyes")
+
+# Checks for libraries.
+
+#TODO not sure how to check for a C++ library.
+# AC_CHECK_LIB([CppUTest], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([stdlib.h])
 
 if test "x$tests" = "xyes"; then
     AC_LANG_PUSH([C++])
@@ -46,6 +61,11 @@ fi
       # [AC_MSG_ERROR([Must specify CppUTest installation directory using CPPUTEST_HOME])],
       # [AC_MSG_NOTICE([CPPUTEST_HOME specified: $CPPUTEST_HOME])]
 # )
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+AC_FUNC_MALLOC
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
