@@ -1,5 +1,6 @@
 extern "C"
 {
+#include "module.h"
 }
 
 #include "CppUTest/TestHarness.h"

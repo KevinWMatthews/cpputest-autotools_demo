@@ -5,3 +5,4 @@ test_src_SOURCES = RunAllTests.cpp \
 # The pkgconfig file has:
 # 	 -lstdc++ -lCppUTest -lCppUTestExt
 test_src_LDADD = -lCppUTest
+test_src_CPPFLAGS = -I$(top_srcdir)/include
