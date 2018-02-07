@@ -9,7 +9,7 @@ TEST_GROUP(module)
 {
 };
 
-TEST(module, wiring_check)
+TEST(module, return_42)
 {
-    FAIL("Start here");
+    LONGS_EQUAL( 42, return_42() );
 }
