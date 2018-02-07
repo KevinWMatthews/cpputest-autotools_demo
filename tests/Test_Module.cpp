@@ -18,3 +18,8 @@ TEST(module, return_43)
 {
     LONGS_EQUAL( 43, return_43() );
 }
+
+TEST(module, leaky_function)
+{
+    has_memory_leak(1);
+}

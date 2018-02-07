@@ -16,6 +16,20 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
 
+# AC_SUBST(CPPUTEST_HOME, [/usr/local])
+AC_ARG_VAR(CPPUTEST_HOME, [Installation directory of unit test framework CppUTest])
+# we coud use AS_IF to see if CPPUTEST_HOME has been set.
+# We really should implement a header file check. We could use failure in this test to notify the user what to do.
+# It is possible to use automake to do the checking:
+#   configure.ac
+#       AM_CONDITIONAL([ENABLE_SOURCECODEPATH], [test "x$ac_srcpath" != "x"])
+#   Makefile.am
+#       if !ENABLE_SOURCECODEPATH
+#       SOURCECODEPATH = ...
+#       endif
+# Will this catch the error at configure time?
+# It may also be possible to use :=
+
 AC_CONFIG_FILES([Makefile
                  src/Makefile
                  products/print_42/Makefile

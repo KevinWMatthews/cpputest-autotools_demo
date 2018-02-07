@@ -1,3 +1,3 @@
 ACLOCAL_AMFLAGS = -I m4
-
-SUBDIRS = src products/print_42 products/print_43 tests
+# products/print_42 products/print_43
+SUBDIRS = src tests
