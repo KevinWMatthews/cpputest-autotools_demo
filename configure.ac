@@ -19,5 +19,6 @@ AC_PROG_INSTALL
 AC_CONFIG_FILES([Makefile
                  src/Makefile
                  products/print_42/Makefile
+                 products/print_43/Makefile
                  tests/Makefile])
 AC_OUTPUT
