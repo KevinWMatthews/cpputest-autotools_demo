@@ -1,4 +1,4 @@
-# Archive all source code to enable link-time substitution
+# Archive all source code to enable link-time substitution during tests
 lib_LTLIBRARIES = libsrc.la
 
 libsrc_la_SOURCES = module.c
