@@ -1,3 +1,7 @@
 Fix the readme ;)
 
 Make test compilation conditional.
+
+Investigate MemoryLeakDetectorNewMacros.h
+    Is it always included? The memory report seems to include it.
+    Does an explicit -include flag pull in definitons of size_t? What else? NULL?
